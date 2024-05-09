@@ -1,3 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Struct to represent payment details
+struct Payment {
+    string date;
+    double totalAmount;
+    string product1;
+    string product2;
+
+    // Default constructor
+    Payment() : date(""), totalAmount(0.0), product1(""), product2("") {}
+
+    // Custom constructor
+    Payment(string _date, double _totalAmount, string _product1, string _product2) : date(_date), totalAmount(_totalAmount), product1(_product1), product2(_product2) {}
+};
+
+// Enum to represent shipping status
+enum class ShippingStatus {
+    NotShipped,
+    Shipped,
+    Delivered
+};
+
+// Enum to represent user types
+enum class UserType {
+    Regular,
+    Admin
+};
+
 // User class for authentication
 class User {
 private:
