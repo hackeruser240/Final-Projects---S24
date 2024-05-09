@@ -52,6 +52,54 @@ public:
     }
 };
 
+// Product class for product listings
+class Product {
+private:
+    string name;
+    double price;
+    string description;
+    int stock;
+    ShippingStatus shippingStatus;
+    string trackingNumber;
+
+public:
+    Product(string _name, double _price, string _description, int _stock) : name(_name), price(_price), description(_description), stock(_stock), shippingStatus(ShippingStatus::NotShipped), trackingNumber("") {}
+
+    Product() : name(""), price(0.0), description(""), stock(0), shippingStatus(ShippingStatus::NotShipped), trackingNumber("") {} // Default constructor
+
+    void displayInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Price: $" << price << endl;
+        cout << "Description: " << description << endl;
+        cout << "Stock: " << stock << endl;
+        cout << "Shipping Status: ";
+        switch (shippingStatus) {
+        case ShippingStatus::NotShipped:
+            cout << "Not Shipped" << endl;
+            break;
+        case ShippingStatus::Shipped:
+            cout << "Shipped (Tracking Number: " << trackingNumber << ")" << endl;
+            break;
+        case ShippingStatus::Delivered:
+            cout << "Delivered (Tracking Number: " << trackingNumber << ")" << endl;
+            break;
+        }
+    }
+
+    void ship(string _trackingNumber) {
+        shippingStatus = ShippingStatus::Shipped;
+        trackingNumber = _trackingNumber;
+    }
+
+    void deliver() {
+        shippingStatus = ShippingStatus::Delivered;
+    }
+
+    string getName() const {
+        return name;
+    }
+};
+
 // Admin class for managing products
 class Admin {
 public:
