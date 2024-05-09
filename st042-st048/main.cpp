@@ -52,6 +52,70 @@ public:
     }
 };
 
+// Admin class for managing products
+class Admin {
+public:
+    bool authenticate(string _email, string _password) {
+        // Perform admin authentication
+        // For simplicity, hardcoding the admin credentials
+        return (_email == "sultan@gmail.com" && _password == "password123");
+    }
+
+    void adminPanel() {
+        char choice;
+        do {
+            cout << "\nAdmin Panel" << endl;
+            cout << "1. Add Product" << endl;
+            cout << "2. Edit Product" << endl;
+            cout << "3. Delete Product" << endl;
+            cout << "4. Exit" << endl;
+            cout << "Enter your choice: ";
+            cin >> choice;
+
+            switch (choice) {
+            case '1':
+                addProduct();
+                break;
+            case '2':
+                editProduct();
+                break;
+            case '3':
+                deleteProduct();
+                break;
+            case '4':
+                cout << "Exiting Admin Panel..." << endl;
+                break;
+            default:
+                cout << "Invalid choice! Please try again." << endl;
+            }
+        } while (choice != '4');
+    }
+
+    void addProduct() {
+        string name;
+        cout << "Enter name of the product to add: ";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Product '" << name << "' added successfully!" << endl;
+    }
+
+    void editProduct() {
+        string name;
+        cout << "Enter name of the product to edit: ";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Product '" << name << "' edited successfully!" << endl;
+    }
+
+    void deleteProduct() {
+        string name;
+        cout << "Enter name of the product to delete: ";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Product '" << name << "' deleted successfully!" << endl;
+    }
+};
+
 int main() {
     // Sample user for authentication
     User user("hussnain@gmail.com", "password123", UserType::Regular);
