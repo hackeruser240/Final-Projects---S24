@@ -100,6 +100,34 @@ public:
     }
 };
 
+// ShoppingCart class for managing shopping cart
+class ShoppingCart {
+private:
+    static const int MAX_ITEMS = 10; // Maximum items in the cart
+    Product items[MAX_ITEMS]; // Array to hold products
+    int itemCount;
+
+public:
+    ShoppingCart() : itemCount(0) {}
+
+    void addToCart(Product product) {
+        if (itemCount < MAX_ITEMS) {
+            items[itemCount++] = product;
+        }
+        else {
+            cout << "Cart is full!" << endl;
+        }
+    }
+
+    void displayCart() {
+        cout << "Shopping Cart:" << endl;
+        for (int i = 0; i < itemCount; ++i) {
+            items[i].displayInfo();
+            cout << endl;
+        }
+    }
+};
+
 // Admin class for managing products
 class Admin {
 public:
