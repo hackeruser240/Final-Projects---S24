@@ -1,3 +1,57 @@
+// User class for authentication
+class User {
+private:
+    string email;
+    string password;
+    UserType type; // Indicates user type
+    Payment* paymentHistory; // Payment history for the user
+    int paymentCount; // Count of payments
+
+public:
+    User(string _email, string _password, UserType _type) : email(_email), password(_password), type(_type), paymentHistory(nullptr), paymentCount(0) {}
+
+    bool authenticate(string _email, string _password) {
+        return (email == _email && password == _password);
+    }
+
+    UserType getType() const {
+        return type;
+    }
+
+    void addToPaymentHistory(string date, double totalAmount, string product1, string product2) {
+        Payment* newPayment = new Payment(date, totalAmount, product1, product2);
+        if (paymentHistory == nullptr) {
+            paymentHistory = new Payment[1];
+            paymentHistory[0] = *newPayment;
+        }
+        else {
+            Payment* temp = new Payment[paymentCount + 1];
+            for (int i = 0; i < paymentCount; ++i) {
+                temp[i] = paymentHistory[i];
+            }
+            temp[paymentCount] = *newPayment;
+            delete[] paymentHistory;
+            paymentHistory = temp;
+        }
+        paymentCount++;
+        delete newPayment;
+    }
+
+    void displayPaymentHistory() {
+        cout << "\nPayment History:payment done" << endl;
+        for (int i = 0; i < paymentCount; ++i) {
+            cout << "Date: " << paymentHistory[i].date << endl;
+            cout << "Total Amount: $" << paymentHistory[i].totalAmount << endl;
+            cout << "Products Purchased: " << paymentHistory[i].product1 << ", " << paymentHistory[i].product2 << endl;
+            cout << endl;
+        }
+    }
+
+    ~User() {
+        delete[] paymentHistory;
+    }
+};
+
 int main() {
     // Sample user for authentication
     User user("hussnain@gmail.com", "password123", UserType::Regular);
