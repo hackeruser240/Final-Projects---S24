@@ -8,13 +8,13 @@ private:
     string password;
 
 public:
-    // Constructor
+
     User(string username, string password) : username(username), password(password) {}
 
-    // Destructor
+
     ~User() {}
 
-    // Getters
+
     string getUsername() const { return username; }
     string getPassword() const { return password; }
 };
@@ -29,14 +29,14 @@ private:
     double price;
 
 public:
-    // Constructor
+
     Book(string title, string author, string category, string isbn, int yearPublished, double price) 
         : title(title), author(author), category(category), isbn(isbn), yearPublished(yearPublished), price(price) {}
 
-    // Destructor
+
     ~Book() {}
 
-    // Getters
+
     string getTitle() const { return title; }
     string getAuthor() const { return author; }
     string getCategory() const { return category; }
@@ -44,7 +44,7 @@ public:
     int getYearPublished() const { return yearPublished; }
     double getPrice() const { return price; }
 
-    // Method to display book details
+
     void displayDetails() const {
         cout << "Title: " << title << endl;
         cout << "Author: " << author << endl;
@@ -62,17 +62,17 @@ private:
     int numBooks;
 
 public:
-    // Constructor
+
     BookManager() : numBooks(0) {}
 
-    // Destructor
+
     ~BookManager() {
         for (int i = 0; i < numBooks; ++i) {
             delete books[i];
         }
     }
 
-    // Method to add a book to the collection
+
     void addBook(const Book& book) {
         if (numBooks < MAX_BOOKS) {
             books[numBooks] = new Book(book);
@@ -82,7 +82,7 @@ public:
         }
     }
 
-    // Method to list all books
+
     void listAllBooks() const {
         cout << "Listing all books:" << endl;
         for (int i = 0; i < numBooks; ++i) {
@@ -91,7 +91,7 @@ public:
         }
     }
 
-    // Method to get book by ISBN
+
     Book* getBookByISBN(const std::string& isbn) {
         for (int i = 0; i < numBooks; ++i) {
             if (books[i]->getISBN() == isbn) {
@@ -110,14 +110,14 @@ private:
     string review;
 
 public:
-    // Constructor
+
     RatingAndReview(string username, string bookTitle, int rating, string review)
         : username(username), bookTitle(bookTitle), rating(rating), review(review) {}
 
-    // Destructor
+
     ~RatingAndReview() {}
 
-    // Getters
+
     string getUsername() const { return username; }
     string getBookTitle() const { return bookTitle; }
     int getRating() const { return rating; }
@@ -126,7 +126,7 @@ public:
 
 class NotificationSystem {
 public:
-    // Method to send notification to user
+
     static void sendNotificationToUser(const string& username, const string& message) {
         cout << "Notification for " << username << ": " << message << endl;
     }
@@ -139,17 +139,17 @@ private:
     int numOrderedBooks;
 
 public:
-    // Constructor
+
     OrderHistory() : numOrderedBooks(0) {}
 
-    // Destructor
+
     ~OrderHistory() {
         for (int i = 0; i < numOrderedBooks; ++i) {
             delete orderedBooks[i];
         }
     }
 
-    // Method to add book to order history
+
     void addToOrderHistory(const Book& book) {
         if (numOrderedBooks < MAX_ORDERED_BOOKS) {
             orderedBooks[numOrderedBooks] = new Book(book);
@@ -159,7 +159,7 @@ public:
         }
     }
 
-    // Method to display order history
+
     void displayOrderHistory() const {
         cout << "Order History:" << endl;
         for (int i = 0; i < numOrderedBooks; ++i) {
@@ -176,17 +176,17 @@ private:
     int numItems;
 
 public:
-    // Constructor
+
     ShoppingCart() : numItems(0) {}
 
-    // Destructor
+
     ~ShoppingCart() {
         for (int i = 0; i < numItems; ++i) {
             delete items[i];
         }
     }
 
-    // Method to add a book to the shopping cart
+
     void addToCart(Book* book) {
         if (numItems < MAX_ITEMS) {
             items[numItems] = new Book(*book);
@@ -196,7 +196,7 @@ public:
         }
     }
 
-    // Method to display items in the shopping cart
+
     void displayCart() const {
         cout << "Items in the shopping cart:" << endl;
         for (int i = 0; i < numItems; ++i) {
@@ -205,12 +205,12 @@ public:
         }
     }
 
-    // Method to get number of items in the cart
+
     int getNumItems() const {
         return numItems;
     }
 
-    // Method to get item at a specific index
+
     Book* getItem(int index) const {
         if (index >= 0 && index < numItems) {
             return items[index];
@@ -221,7 +221,7 @@ public:
 
 class CheckoutProcess {
 public:
-    // Method for checkout process
+
     static void checkout(const ShoppingCart& cart) {
         double totalAmount = 0.0;
         cout << "Checking out..." << endl;
@@ -229,21 +229,21 @@ public:
             totalAmount += cart.getItem(i)->getPrice();
         }
         cout << "Total amount to pay: $" << totalAmount << endl;
-        // Add payment processing logic here
+    
     }
 };
 
 class AdminDashboard {
 public:
-    // Method to manage books
+
     static void manageBooks(BookManager& manager) {
-        // Add your admin book management functionalities here
+    
         cout << "Admin dashboard for book management." << endl;
     }
 };
 
 int main() {
-    // Creating a user
+
     string username, password;
     cout << "Enter username: ";
     cin >> username;
@@ -251,10 +251,8 @@ int main() {
     cin >> password;
     User user(username, password);
 
-    // Creating a BookManager instance
     BookManager manager;
 
-    // Adding books
     char addBookChoice;
     do {
         std::string title, author, category, isbn;
@@ -286,10 +284,8 @@ int main() {
         cin >> addBookChoice;
     } while (addBookChoice == 'y' || addBookChoice == 'Y');
 
-    // Listing all books
     manager.listAllBooks();
 
-    // Shopping Cart
     ShoppingCart cart;
     string addToCartChoice;
     do {
@@ -307,16 +303,12 @@ int main() {
         cin >> addToCartChoice;
     } while (addToCartChoice == "y" || addToCartChoice == "Y");
 
-    // Displaying shopping cart
     cart.displayCart();
 
-    // Checkout process
     CheckoutProcess::checkout(cart);
 
-    // Order History
     OrderHistory orderHistory;
 
-    // Rating and Review
     string bookISBN;
     int userRating;
     string userReview;
@@ -331,14 +323,11 @@ int main() {
 
     RatingAndReview userReviewObj(user.getUsername(), manager.getBookByISBN(bookISBN)->getTitle(), userRating, userReview);
 
-    // Sending notification to user
     string notificationMessage = "Thank you for your review on " + userReviewObj.getBookTitle();
     NotificationSystem::sendNotificationToUser(user.getUsername(), notificationMessage);
 
-    // Adding book to order history
     orderHistory.addToOrderHistory(*(manager.getBookByISBN(bookISBN)));
 
-    // Displaying order history
     orderHistory.displayOrderHistory();
 
     return 0;
