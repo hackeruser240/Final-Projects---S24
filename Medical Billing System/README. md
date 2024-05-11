@@ -1,0 +1,35 @@
+Title of project: Medical billing system
+
+Members:
+1.Maham Farzand 23-set-025
+2.Mahnoor Farzand 23-set-13
+
+Link to github repo: https://github.com/MahamFarzand/projectfile.git
+
+List of integrated features:
+1.user information(patient information management)
+ .name
+ .age
+ .gender
+2.Authorization
+ .authorization provided or not
+3.Appointment schedulling
+ .date
+ .time
+4.Billing and invoicing
+ .payment method
+ .outstanding balance
+5.Medical history(data backup)
+ .traetment
+ .procedures
+ .diagnosis
+
+Simple overview of our project:
+Our Medical Billing System is a software solution designed to make billing and administrative tasks easier for healthcare 
+providers. It helps doctors and clinics manage patient records, create invoices efficiently.
+ With its user-friendly interface and automation features, our system simplifies the billing process, 
+allowing healthcare professionals to focus more on patient care.
+We have interface for the patient information, authorization which is required or not to the user, appointment details
+billing system, medical history.By using our system, This will be helpfull for the software solutions, staff 
+can take care of the patient more efficiently instead of spending thier most of time on making the details of patient
+ information, billing invoicing, the diagnosis of illness, treatment, procedures etc...
