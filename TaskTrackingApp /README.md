@@ -6,6 +6,7 @@
   Saad Khalid        23-st-036
 
 --Link to GitHub Repo:  
+https://github.com/ZaidPTUT041/SCM-Project
 
 
 --List of integrated Features: 
