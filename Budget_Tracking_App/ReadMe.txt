@@ -7,7 +7,7 @@
 
 - Link to GitHub Repo: 
 
-  https://github.com/Taha-PTUT51/Taha-PTUT51-Budget-Tracking-App
+  https://github.com/Taha-PTUT51/Budget_Tracking_App
 
 - List of Integrated Features:
 
