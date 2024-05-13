@@ -25,6 +25,7 @@ List of Integrated fetures :
 16	Notifications
 17	Guest Reviews and Ratings
 
+Link to GitHub Repo: https://github.com/denji444/Online_Hotel_Reservation_System.git
 Abstract:
 
 The presented code implements a Hotel Reservation System through object-oriented programming in C++. It comprises classes and functionalities for managing various aspects of hotel operations, including administration, inventory management, room availability, booking, rate management, discounts, promotions, reporting, payments, user management, reviews, cancellation policies, payment systems, and room reservations.
