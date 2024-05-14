@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-// sorry I have to use it ｡ﾟ･ (>﹏<) ･ﾟ｡
 #include <optional>
 
 template<typename T>
