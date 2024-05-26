@@ -1,0 +1,138 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class User {
+private:
+    string patientID;
+    string name;
+    int age;
+    string gender;
+
+public:
+    void setPatientInfo(string id, string n, int a, string g) {
+        patientID = id;
+        name = n;
+        age = a;
+        gender = g;
+    }
+
+    string getPatientID() {
+        return patientID;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    int getAge() {
+        return age;
+    }
+
+    string getGender() {
+        return gender;
+    }
+};
+
+class Authorization {
+public:
+    static bool handleAuthorization() {
+        char choice;
+        cout << "Is Authorization Granted? (y/n): ";
+        cin >> choice;
+        return (choice == 'y' || choice == 'Y');
+    }
+};
+
+class Appointment {
+public:
+    static void handleAppointmentScheduling(string& details, string& remainder) {
+        cout << "Enter Appointment Details: ";
+        cin.ignore();
+        getline(cin, details);
+        cout << "Enter Remainder Method (SMS/Email): ";
+        getline(cin, remainder);
+    }
+};
+
+class Billing {
+public:
+    static void handleBilling(double& balance, string& method) {
+        cout << "Enter Outstanding Balance: ";
+        cin >> balance;
+        cout << "Enter Payment Method: ";
+        cin.ignore();
+        getline(cin, method);
+    }
+};
+
+class MedicalHistory {
+public:
+    static void handleMedicalHistory(string& diag, string& treat, string& proc) {
+        cout << "Enter Diagnosis: ";
+        getline(cin, diag);
+        cout << "Enter Treatment: ";
+        getline(cin, treat);
+        cout << "Enter Procedures: ";
+        getline(cin, proc);
+    }
+};
+
+int main() {
+    cout << "Welcome to Medical Billing System" << endl;
+
+    char addAnother;
+    do {
+        User user;
+        string id, name, gender;
+        int age;
+
+        cout << "Enter Patient ID: ";
+        cin >> id;
+        cout << "Enter Name: ";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Enter Age: ";
+        cin >> age;
+        cout << "Enter Gender: ";
+        cin.ignore();
+        getline(cin, gender);
+
+        user.setPatientInfo(id, name, age, gender);
+
+        cout << "\nPatient ID: " << user.getPatientID() << endl;
+        cout << "Name: " << user.getName() << endl;
+        cout << "Age: " << user.getAge() << endl;
+        cout << "Gender: " << user.getGender() << endl;
+
+        // Authorization
+        bool authorization = Authorization::handleAuthorization();
+        cout << "Authorization Granted? " << (authorization ? "Yes" : "No") << endl;
+
+        // Appointment Scheduling
+        string appointmentDetails, remainderMethod;
+        Appointment::handleAppointmentScheduling(appointmentDetails, remainderMethod);
+        cout << "Appointment Details: " << appointmentDetails << endl;
+        cout << "Remainder Method: " << remainderMethod << endl;
+
+        // Billing
+        double outstandingBalance;
+        string paymentMethod;
+        Billing::handleBilling(outstandingBalance, paymentMethod);
+        cout << "Outstanding Balance: " << outstandingBalance << endl;
+        cout << "Payment Method: " << paymentMethod << endl;
+
+        // Medical History Records
+        string diagnosis, treatment, procedures;
+        MedicalHistory::handleMedicalHistory(diagnosis, treatment, procedures);
+        cout << "Diagnosis: " << diagnosis << endl;
+        cout << "Treatment: " << treatment << endl;
+        cout << "Procedures: " << procedures << endl;
+
+        cout << "Do you want to add another patient? (y/n): ";
+        cin >> addAnother;
+    } while (addAnother == 'y' || addAnother == 'Y');
+
+    return 0;
+}
