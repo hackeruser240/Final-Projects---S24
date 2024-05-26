@@ -1,0 +1,32 @@
+Title: "Online Laundry Shop"
+
+Members:
+
+1.Abdul Kabir 
+2.Abdul Waheed 
+
+Link to GitHub Repo: 
+
+List of Integrated Features:
+
+1.	User Registration.
+2.	Laundry Service Selection
+3.	Service Availability
+4.	Service Area Check
+5.	Pickup and Delivery Scheduling
+6.	Order Tracking
+7.	Service Customization
+8.	Order Editing Priority
+9.	Notification System
+10.	User Support
+11.	User Reviews and Ratings
+12.	Order History Priority
+13.	Price Estimation
+14.	Payment Options
+15.	Promotions and Discounts
+16.	Secure Data Handling
+
+Abstract:
+           In this project , I have created a project of Online Laundry Shop . In this project . first of all user will register itself and 
+then he want to select the service he want with its price tags . After filling this , he will login and then he saw some features 
+that I have added in the code on the screen . At the end , He will logout itself and then exit . 
