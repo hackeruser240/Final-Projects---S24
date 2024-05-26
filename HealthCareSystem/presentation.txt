@@ -1,0 +1,56 @@
+Slide 1:
+Tital: Health Care System
+
+Slide 2:
+Objectives:
+- To provide a better system to handle a hospital 
+- To streamline the process of keeping data of the patients, doctors, disesases and medicines
+- To make a system which is easily extendable and future proff.
+
+Slide 3:
+Domonstation:
+- Yar bas demo daina hai chala kar
+
+Slide 4:
+Different Components:
+- Admin
+- Doctor
+- Patient
+- Disease
+- Medicine
+~Drawing form the diagram~
+
+Slide 5:
+Admin Module:
+- Integration with the login system.
+- CRUD operations for managing medicines, diseases, doctors, patients, and schedules.
+- Dashboard for comprehensive system management.
+
+Slide 6:
+~Admin Module ka code~
+
+Slide 7:
+Doctor Module:
+- Integration with the login system.
+- View patient schedules and information.
+- Check Patients.
+
+Slide 8:
+~Doctor Module ka code~
+
+Slide 9:
+Data Management:
+- The whole data is managed through a system of Linked List.
+- Each Node of the list comtains a "data" attrinute.
+- This allows us to link them togethor.
+
+Slide 10:
+~List ka code~
+
+Slide 11: 
+Future Enhancements:
+- More patient management.
+- Improvement of scheduling system.
+
+Slide 12:
+~Any Question wali shit~
