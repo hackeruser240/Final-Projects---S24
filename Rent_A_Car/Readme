@@ -1,0 +1,41 @@
+Title:  Rent A Car
+
+Members:
+1. Muhammad Hamad (23-st-012)
+2. Faizan Ahmad   (23-st-043)
+
+link of REPO :
+                https://github.com/fazii-123/Final-Projects-S24.git
+
+ List of Integrated Features:
+
+1.Admin
+2.User Registration
+3.Vehicle Inventory Management
+4.Reservation System
+5.Booking Management
+6.User Profile Management
+7.Pricing and Billing System
+8.Availability Calendar
+9.Car Searching
+10.Car Searching
+11.Vehicle Condition Reporting
+12.GPS Tracking System
+13.Maintenance Scheduling
+14.Feedback and Rating System
+15.Customer Support System
+
+
+ Abstract:
+
+Overview:The Rent a Car System is a software project designed to streamline and automate various aspects of vehicle rental services. It provides a user-friendly 
+interface for users to register, log in, manage their profiles, search for vehicles, make reservations, track bookings, and provide feedback. Additionally, the system offers 
+  functionalities for administrators to add vehicles, update availability, schedule maintenance, and handle customer support requests.
+
+Desired Outcomes:
+                1.Simplify the process of vehicle rental for users by providing a platform for browsing available vehicles, making reservations, and managing bookings.
+       2.Improve operational efficiency for vehicle rental companies by automating administrative tasks such as vehicle management, availability tracking, and maintenance scheduling.
+       3.Enhance user satisfaction by facilitating communication between users and administrators, allowing issue resolution and feedback collection.
+       4.Provide administrators with insights into user preferences and feedback, enabling them to optimize service offerings and improve overall customer experience.
+
+     
