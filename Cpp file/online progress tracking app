@@ -1,0 +1,384 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class User {
+private:
+    string username;
+    string password;
+
+public:
+    User(const string& username, const string& password) : username(username), password(password) {}
+
+    const string& getUsername() const {
+        return username;
+    }
+
+    const string& getPassword() const {
+        return password;
+    }
+};
+
+class GoalSetting {
+private:
+    struct Goal {
+        string username;
+        string goal;
+
+        Goal(const string& u, const string& g) : username(u), goal(g) {}
+    };
+
+    vector<Goal> goals;
+
+public:
+    void setGoal(const string& username, const string& goal) {
+        goals.push_back(Goal(username, goal));
+        cout << "Goal set successfully for user " << username << ".\n";
+    }
+
+    void displayGoals(const string& username) {
+        cout << "Goals for user " << username << ":\n";
+        for (const auto& goal : goals) {
+            if (goal.username == username) {
+                cout << "- " << goal.goal << endl;
+            }
+        }
+    }
+};
+
+class ProgressTracking {
+private:
+    struct Progress {
+        string goal;
+        int percentage;
+
+        Progress(const string& g, int p) : goal(g), percentage(p) {}
+    };
+
+    vector<Progress> progress;
+
+public:
+    void trackProgress(const string& goal, int percentage) {
+        progress.push_back(Progress(goal, percentage));
+        cout << "Progress tracked for goal '" << goal << "': " << percentage << "% completed.\n";
+    }
+
+    void displayProgress(const string& goal) {
+        cout << "Progress for goal '" << goal << "': ";
+        for (const auto& p : progress) {
+            if (p.goal == goal) {
+                cout << p.percentage << "% completed\n";
+                return;
+            }
+        }
+        cout << "Not tracked yet\n";
+    }
+};
+
+Ta
+};
+
+class RemindersAndNotifications {
+public:
+    void sendReminder(const string& username, const string& message) {
+        cout << "Reminder sent to user '" << username << "': " << message << endl;
+    }
+};
+
+class History {
+public:
+    void checkHistory(const string& username) {
+        // Simulated function to check history
+        cout << "Displaying history for user '" << username << "'.\n";
+        // Display charts, graphs, or progress bars here
+    }
+};
+
+class Collaboration {
+public:
+    void collaborateOnGoal(const string& goal, const string& collaborator) {
+        cout << "Collaborating on goal '" << goal << "' with user '" << collaborator << "'.\n";
+        // Implement collaboration features like shared task lists and progress updates
+    }
+};
+
+class AccessControl {
+private:
+    struct Permission {
+        string goal;
+        string username;
+        bool canEdit;
+
+        Permission(const string& g, const string& u, bool edit) : goal(g), username(u), canEdit(edit) {}
+    };
+
+    vector<Permission> permissions;
+
+public:
+    void grantPermission(const string& goal, const string& username, bool canEdit) {
+        permissions.push_back(Permission(goal, username, canEdit));
+        cout << "Permission granted for user '" << username << "' on goal '" << goal << "'.\n";
+    }
+
+    bool hasPermission(const string& goal, const string& username) {
+        for (const auto& perm : permissions) {
+            if (perm.goal == goal && perm.username == username) {
+                return perm.canEdit;
+            }
+        }
+        return false; // Default to false if no permission set
+    }
+};
+
+class FeedbackMechanism {
+public:
+    void provideFeedback(const string& feedback) {
+        cout << "Feedback received: " << feedback << endl;
+        // Process and store the feedback for future updates and improvements
+    }
+};
+
+class LoginSystem {
+private:
+    vector<User> users;
+    GoalSetting goalSetting;
+    ProgressTracking progressTracking;
+    TaskManagement taskManagement;
+    RemindersAndNotifications remindersAndNotifications;
+    History history;
+    Collaboration collaboration;
+    AccessControl accessControl;
+    FeedbackMechanism feedbackMechanism;
+    string loggedInUser;
+
+public:
+    bool registerUser(const string& username, const string& password) {
+        // Check if username already exists
+        for (const auto& user : users) {
+            if (user.getUsername() == username) {
+                cout << "Username already exists. Please choose another one.\n";
+                return false;
+            }
+        }
+
+        // Register the user
+        users.push_back(User(username, password));
+        cout << "User registered successfully.\n";
+        return true;
+    }
+
+    bool authenticateUser(const string& username, const string& password) {
+        // Check if username exists
+        for (const auto& user : users) {
+            if (user.getUsername() == username) {
+                // Check if password matches
+                if (user.getPassword() == password) {
+                    loggedInUser = username; // Set the logged-in user
+                    cout << "Login successful. Welcome, " << username << "!\n";
+                    return true;
+                } else {
+                    cout << "Incorrect password. Please try again.\n";
+                    return false;
+                }
+            }
+        }
+
+        cout << "User not found. Please register or check your username.\n";
+        return false;
+    }
+
+    GoalSetting& getGoalSetting() {
+        return goalSetting;
+    }
+
+    ProgressTracking& getProgressTracking() {
+        return progressTracking;
+    }
+
+    TaskManagement& getTaskManagement() {
+        return taskManagement;
+    }
+
+    RemindersAndNotifications& getRemindersAndNotifications() {
+        return remindersAndNotifications;
+    }
+
+    History& getHistory() {
+        return history;
+    }
+
+    Collaboration& getCollaboration() {
+        return collaboration;
+    }
+
+    AccessControl& getAccessControl() {
+        return accessControl;
+    }
+
+    FeedbackMechanism& getFeedbackMechanism() {
+        return feedbackMechanism;
+    }
+
+    const string& getLoggedInUser() const {
+        return loggedInUser;
+    }
+};
+
+int main() {
+    LoginSystem loginSystem;
+    int choice;
+    string username, password, goal, taskName, collaborator, reminder, feedback;
+
+    bool exitProgram = false;
+    do {
+        cout << "**Welcome to our project**\n**Roll NO 18,32**\n\n**The Login System**\n";
+        cout << "1. Login\n";
+        cout << "2. Sign Up\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter username: ";
+                cin >> username;
+                cout << "Enter password: ";
+                cin >> password;
+                if (loginSystem.authenticateUser(username, password)) {
+                    cout << "Login successful. Welcome to Progress Tracker, " << loginSystem.getLoggedInUser() << "!\n";
+                    do {
+                        cout << "1. Set Goal\n";
+                        cout << "2. Track Progress\n";
+                        cout << "3. Manage Tasks\n";
+                        cout << "4. Display Goals\n";
+                        cout << "5. Display Progress\n";
+                        cout << "6. Set Reminder\n";
+                        cout << "7. Check History\n";
+                        cout << "8. Collaborate on Goal\n";
+                        cout << "9. Grant Permission\n";
+                        cout << "10. Provide Feedback\n";
+                        cout << "11. Log Out\n";
+                        cout << "Enter your choice: ";
+                        cin >> choice;
+
+                        switch (choice) {
+                            case 1:
+                                cout << "Enter your goal: ";
+                                cin.ignore(); // Ignore newline character left in the stream
+                                getline(cin, goal);
+                                loginSystem.getGoalSetting().setGoal(loginSystem.getLoggedInUser(), goal);
+                                break;
+                            case 2:
+                                cout << "Enter the goal you want to track progress for: ";
+                                cin.ignore();
+                                getline(cin, goal);
+                                int percentage;
+                                cout << "Enter the percentage of completion: ";
+                                cin >> percentage;
+                                loginSystem.getProgressTracking().trackProgress(goal, percentage);
+                                break;
+                            case 3:
+                                cout << "Enter the goal you want to manage tasks for: ";
+                                cin.ignore();
+                                getline(cin, goal);
+                                cout << "1. Add Task\n";
+                                cout << "2. Display Tasks\n";
+                                cout << "3. Mark Task as Completed\n";
+                                cout << "Enter your choice: ";
+                                cin >> choice;
+
+                                switch (choice) {
+                                    case 1:
+                                        cout << "Enter task name: ";
+                                        cin.ignore();
+                                        getline(cin, taskName);
+                                        loginSystem.getTaskManagement().addTask(goal, taskName);
+                                        break;
+                                    case 2:
+                                        loginSystem.getTaskManagement().displayTasks(goal);
+                                        break;
+                                    case 3:
+                                        cout << "Enter task name to mark as completed: ";
+                                        cin.ignore();
+                                        getline(cin, taskName);
+                                        loginSystem.getTaskManagement().markTaskAsCompleted(goal, taskName);
+                                        break;
+                                    default:
+                                        cout << "Invalid choice.\n";
+                                        break;
+                                }
+                                break;
+                            case 4:
+                                loginSystem.getGoalSetting().displayGoals(loginSystem.getLoggedInUser());
+                                break;
+                            case 5:
+                                cout << "Enter the goal you want to display progress for: ";
+                                cin.ignore();
+                                getline(cin, goal);
+                                loginSystem.getProgressTracking().displayProgress(goal);
+                                break;
+                            case 6:
+                                cout << "Enter reminder message: ";
+                                cin.ignore();
+                                getline(cin, reminder);
+                                loginSystem.getRemindersAndNotifications().sendReminder(loginSystem.getLoggedInUser(), reminder);
+                                break;
+                            case 7:
+                                loginSystem.getHistory().checkHistory(loginSystem.getLoggedInUser());
+                                break;
+                            case 8:
+                                cout << "Enter the goal you want to collaborate on: ";
+                                cin.ignore();
+                                getline(cin, goal);
+                                cout << "Enter the username of the collaborator: ";
+                                getline(cin, collaborator);
+                                loginSystem.getCollaboration().collaborateOnGoal(goal, collaborator);
+                                break;
+                            case 9:
+                                cout << "Enter the goal you want to grant permission for: ";
+                                cin.ignore();
+                                getline(cin, goal);
+                                cout << "Enter the username for permission: ";
+                                getline(cin, username);
+                                char choice;
+                                cout << "Grant edit permission? (y/n): ";
+                                cin >> choice;
+                                loginSystem.getAccessControl().grantPermission(goal, username, (choice == 'y' || choice == 'Y'));
+                                break;
+                            case 10:
+                                cout << "Enter your feedback: ";
+                                cin.ignore();
+                                getline(cin, feedback);
+                                loginSystem.getFeedbackMechanism().provideFeedback(feedback);
+                                break;
+                            case 11:
+                                cout << "Logging out...\n";
+                                break;
+                            default:
+                                cout << "Invalid choice. Please try again.\n";
+                                break;
+                        }
+                    } while (choice != 11);
+                }
+                break;
+            case 2:
+                cout << "Enter username: ";
+                cin >> username;
+                cout << "Enter password: ";
+                cin >> password;
+                loginSystem.registerUser(username, password);
+                break;
+            case 3:
+                cout << "Exiting...\n";
+                exitProgram = true;
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+        }
+    } while (!exitProgram);
+
+    return 0;
+}
