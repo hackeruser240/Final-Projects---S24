@@ -1,0 +1,36 @@
+Title 
+      "Online Time Scheduling App"
+Members:
+      Alisha(23-st-022)
+      Fatima(23-st-026)
+Functional Requirements:
+1. User Registration & Authentication 
+2. Profile Management
+3. Task management 
+4. Calendar View
+5. Event Creation
+6. Notification System
+7. Time Zones Support 
+8. Performance Optimization 
+9. Search Functionality
+10. Recurring Events
+11. Deadline Tracking
+12. Event Editing & Deletion 
+13. Security Measures 
+14. Data backup and recovery
+15. Documentation & Help Support 
+16. Feedback Mechanism
+
+Abstract:
+        Abstract:
+
+The provided code implements a Time Scheduling System in C++, allowing users to manage tasks and events. It features a class structure consisting of `Task` and `TimeSchedulingSystem`. 
+The `Task` class encapsulates task details such as title, description, date, and time, along with methods for validation and display.
+The `TimeSchedulingSystem` class provides functionalities for user registration, login/logout, task and event management, feedback provision,and deadline tracking. 
+Users can register/login, add/view/delete tasks and events, search tasks by title, date, or time, edit events, and provide feedback. The system supports multiple users with an admin login feature.
+Tasks and events are stored in dynamic arrays within the system class, with provisions for resizing when capacity is reached. Additionally, tasks can be sorted based on their deadlines.
+The system provides a command-line interface, allowing users to interact with the functionality through a series of menu options.
+Admin login is required for system access, ensuring security and user authentication.
+Overall, the Time Scheduling System offers a comprehensive solution for managing tasks and events efficiently, providing users with organization and scheduling capabilities.
+
+
