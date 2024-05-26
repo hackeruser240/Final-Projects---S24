@@ -1,0 +1,318 @@
+#include <iostream>
+using namespace std;
+
+class User {
+private:
+    string username, password, email, role;
+
+public:
+    User(string u, string p, string e, string r)
+        : username(u), password(p), email(e), role(r) {}
+
+    string getUsername() const {
+        return username;
+    }
+
+    void registerUser() {
+        cout << username << " Tutor registered successfully!" << endl;
+    }
+
+    void loginUser() {
+        cout << username << " logged in successfully!" << endl;
+    }
+};
+
+class Tutor : public User {
+private:
+    string qualifications;
+    string availability;
+
+public:
+    Tutor(string uname, string pwd, string mail, string qual, string avail)
+        : User(uname, pwd, mail, "tutor"), qualifications(qual), availability(avail) {}
+
+    void setQualifications(string qual) {
+        qualifications = qual;
+    }
+
+    void setAvailability(string avail) {
+        availability = avail;
+    }
+};
+
+class Student : public User {
+private:
+    int grade;
+    string subjectsOfInterest;
+
+public:
+    Student(string uname, string pwd, string mail)
+        : User(uname, pwd, mail, "student"), grade(0), subjectsOfInterest("") {}
+
+    void setGrade(int grd) {
+        grade = grd;
+    }
+
+    void setSubjectsOfInterest(string subjects) {
+        subjectsOfInterest = subjects;
+    }
+};
+
+class Tutorfiltr {
+private:
+    string subject;
+
+public:
+    Tutorfiltr(string sub)
+        : subject(sub) {}
+
+    void Display() {
+        cout << "Tutor xyz available for " << subject << endl;
+    }
+};
+
+class RealTimeMessagingSystem {
+public:
+    void sendMessage(User& sender, User& receiver, string message) {
+        cout << sender.getUsername() << " sent message to " << receiver.getUsername() << ": " << message << endl;
+    }
+};
+
+class ProgressTracking {
+public:
+    void trackProgress(Student& student) {
+        cout << "Progress tracked for student " << student.getUsername() << endl;
+    }
+};
+
+class SessionRescheduling {
+public:
+    void rescheduleSession(Tutor& tutor, Student& student, string newDateTime) {
+        cout << "Session with tutor " << tutor.getUsername() << " for student " << student.getUsername()
+             << " rescheduled to " << newDateTime << endl;
+    }
+};
+
+class GroupTutoring {
+public:
+    void createGroupSession(const Student students[], int numStudents, Tutor& tutor, string dateTime) {
+        cout << "Group session created by tutor " << tutor.getUsername() << " for students:" << endl;
+        for (int i = 0; i < numStudents; ++i) {
+            cout << students[i].getUsername() << endl;
+        }
+        cout << "Date and time: " << dateTime << endl;
+    }
+};
+
+class StudentProgressReports {
+public:
+    void generateReport(Student& student) {
+        cout << "Progress report generated for student " << student.getUsername() << endl;
+    }
+};
+
+class ParentalControls {
+public:
+    void restrictAccess(Student& student) {
+        cout << "Access restricted for student " << student.getUsername() << endl;
+    }
+};
+
+class OfflineAccess {
+public:
+    void provideOfflineAccess(User& user) {
+        cout << "Offline access provided to " << user.getUsername() << endl;
+    }
+};
+
+class NotificationSystem {
+public:
+    void sendNotification(User& user, string message) {
+        cout << "Notification sent to " << user.getUsername() << ": " << message << endl;
+    }
+};
+
+int main() {
+    int continueas;
+    cout << "Press 2 to continue as Student\n" << "Press 1 to continue as Tutor" << endl;
+    cin >> continueas;
+
+    if (continueas == 1) {
+        cout << "You have logged in as tutor now continue for registration" << endl;
+        string name, password, email, Qual, availability;
+        cout << "enter the name: ";
+        cin >> name;
+        cout << "enter the password: ";
+        cin >> password;
+        cout << "enter the email: ";
+        cout << "Use lowercase letters and @, .com" << endl;
+        cin >> email;
+
+        while (email.find('@') == string::npos || email.find(".com") == string::npos) {
+            cout << "Your email must contain '@' and '.com'" << endl;
+            cout << "Enter your email address: ";
+            cin >> email;
+        }
+
+        cout << "Enter the qualification: ";
+        cin >> Qual;
+        cout << "enter the availability: ";
+        cin >> availability;
+        Tutor tutor1(name, password, email, Qual, availability);
+        tutor1.registerUser();
+        cout << "Press 1 to continue as tutor and 2 to continue as student" << endl;
+        cin >> continueas;
+        while (continueas == 1) {
+            cout << "you are already logged in as Tutor \n" << "Press 1 to continue as tutor and 2 to continue as student" << endl;
+            cin >> continueas;
+        }
+
+    }
+    if (continueas == 2) {
+        cout << "You have logged in as Student\nPress\nsign up = 2" << endl;
+        string name, password, email, subjects, S_name, S_password;
+        int sign_up;
+        cin >> sign_up;
+        if (sign_up == 2) {
+            cout << "enter the Username: ";
+            cin >> name;
+            while (email.find('@') == string::npos || email.find(".com") == string::npos) {
+                cout << "Your email must contain '@' and '.com'" << endl;
+                cout << "Enter your email address: ";
+                cin >> email;
+            }
+            cout << "enter the password: ";
+            cin >> password;
+            cout << "Sign_up successfully\nNow log in\nPress 1" << endl;
+            cin >> sign_up;
+            while (sign_up != 1) {
+                cout << "Wrong number please enter 1" << endl;
+                cin >> sign_up;
+            }
+
+        }
+        if (sign_up == 1) {
+            cout << "Sign_in successfully" << endl;
+            cout << "enter the Username: ";
+            cin >> S_name;
+            if (S_name != name) {
+
+                cout << "Wrong name please enter again" << endl;
+                cin >> name;
+                while (S_name == name) {
+                    cout << "Wrong name please enter again" << endl;
+                    cin >> name;
+                }
+            }
+            cout << "enter the password: ";
+            cin >> S_password;
+            if (S_password != password) {
+                cout << "Wrong password please enter again" << endl;
+                cin >> password;
+                while (S_password == password) {
+                    cout << "Wrong password please enter again" << endl;
+                    cin >> password;
+                }
+            }
+            Student student1(name, password, email);
+            student1.loginUser();
+        }
+        cout << "search for tutor" << endl;
+        string subject;
+        cout << "Enter the subject" << endl;
+        cin >> subject;
+        Tutorfiltr filtr(subject);
+        filtr.Display();
+        cout << "Press 1 to confirm booking" << endl;
+        int confirmbooking;
+        cin >> confirmbooking;
+        if (confirmbooking != 1) {
+            cout << "invalid press 1" << endl;
+            cin >> confirmbooking;
+            while (confirmbooking == 1) {
+                cout << "invalid press 1" << endl;
+                cin >> confirmbooking;
+            }
+        }
+        cout << "Booking confirmed" << endl;
+        cout << "Continue for fee payment procedure" << endl;
+        int fee = 5000, confirm;
+        string bank = "Meezan bank";
+        cout << "confirm fee payment " << fee << " at " << bank;
+        cin >> confirm;
+        if (confirm != 1) {
+            cout << "invalid entry press 1" << endl;
+            cin >> confirm;
+            while (confirm == 1) {
+                cout << "invalid entry press 1" << endl;
+                cin >> confirm;
+            }
+        }
+        cout << "Notification sent to your e-mail" << endl;
+        cout << "press 1 for offline lectures\n" << "press 2 for online lectures" << endl;
+        int enternumber;
+        cin >> enternumber;
+        if (enternumber == 1) {
+            cout << "No offline lectures available right now" << endl;
+        }
+        if (enternumber == 2) {
+            cout << "Set time and days for online class with tutor" << endl;
+            int time;
+            string day;
+            cout << "Enter time: ";
+            cin >> time;
+            cout << "Enter days: ";
+            cin >> day;
+            cout << "Tutor Xyz available" << endl;
+
+        }
+        if (enternumber != 1 && enternumber != 2)
+		 {
+            cout << "invalid entries\n " << endl;
+            cout << "press 1 for offline lectures\n" << "press 2 for online lectures" << endl;
+            cin >> enternumber;
+            while (enternumber == 1 && enternumber == 2)
+			 {
+			 	cout << "invalid entries\n " << endl;
+                cout << "press 1 for offline lectures\n" << "press 2 for online lectures" << endl;
+                cin >> enternumber;
+            }
+
+        }
+        
+        Student student("StudentName", "StudentPassword", "student@example.com");
+        Tutor tutor("TutorName", "TutorPassword", "tutor@example.com", "PhD", "Evenings");
+
+        RealTimeMessagingSystem messagingSystem;
+        messagingSystem.sendMessage(student, tutor, "Hi, can we schedule a session?");
+
+    
+        ProgressTracking progressTracking;
+        progressTracking.trackProgress(student);
+
+        
+        SessionRescheduling sessionRescheduling;
+        sessionRescheduling.rescheduleSession(tutor, student, "2024-05-15 4:00 PM");
+        
+        const int numStudents = 3;
+        Student students[numStudents] = {
+            Student("Student1", "Student1Password", "student1@example.com"),
+            Student("Student2", "Student2Password", "student2@example.com"),
+            Student("Student3", "Student3Password", "student3@example.com")
+        };
+
+        GroupTutoring groupTutoring;
+        groupTutoring.createGroupSession(students, numStudents, tutor, "2024-05-18 6:00 PM");
+
+        NotificationSystem notificationSystem;
+        notificationSystem.sendNotification(student, "Your session with TutorName is scheduled for tomorrow.");
+
+    }
+    if (continueas != 2 && continueas != 1)
+	 {
+        cout << "Not valid number!" << endl;
+    }
+
+
+    return 0;
+}
